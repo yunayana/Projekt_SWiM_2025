@@ -1,9 +1,9 @@
-# 🚗 Projekt: Autonomiczny Pojazd Mobilny
+# 🚗 Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
 
 ### 🎓 Uczestnicy zespołu:
-- **Yana Trotsenko** – 21232 (🐱 kotek)  
-- **Zofia Głowacka** – 21234 (🐻 miś)  
-- **Valeriia Khylchenko** – 21279 (🐿️ wiewiórka)
+- **Yana Trotsenko** – 21232 🐱  
+- **Zofia Głowacka** – 21234 🐻   
+- **Valeriia Khylchenko** – 21279 🐿️ 
 
 ---
 
@@ -30,7 +30,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 ## 🔌 Schemat elektryczny
 
 📷 **Schemat**:  
-_(tu wstaw zdjęcie schematu)_  
+![Schemat elektryczny](img/PLYTKA.png) 
 > W repozytorium umieść plik w folderze `docs/` jako np. `schemat.jpg` i użyj:  
 > `![Schemat elektryczny](docs/schemat.jpg)`
 
