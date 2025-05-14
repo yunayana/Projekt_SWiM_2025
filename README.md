@@ -1,1 +1,2 @@
-# Projekt_SWiM_2025
+# Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
+
