@@ -77,5 +77,5 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 ## Działanie w IdeCube
 
 ## Link do repozytorium 
-[Zobacz repozytorium na GitHubie]([https://github.com/yunayana/Projekt_SWiM_2025])
+[Zobacz repozytorium na GitHubie](https://github.com/yunayana/Projekt_SWiM_2025)
 
