@@ -1,19 +1,19 @@
-# 🚗 Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
+# Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
 
-### 🎓 Uczestnicy zespołu:
+### Uczestnicy zespołu:
 - **Yana Trotsenko** – 21232 🐱  
 - **Zofia Głowacka** – 21234 🐻   
 - **Valeriia Khylchenko** – 21279 🐿️ 
 
 ---
 
-## 🎯 Cel projektu
+## Cel projektu
 
 Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego** z wykorzystaniem mikrokontrolera **STM32**.
 
 ---
 
-## 🔧 Założenia konstrukcyjne pojazdu
+## Założenia konstrukcyjne pojazdu
 
 | Komponent                           | Opis                                      |
 |-------------------------------------|-------------------------------------------|
@@ -35,15 +35,15 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ---
 
-## ⚙️ Połączenia
+## ⚙Połączenia
 
-### 🔁 Koła i silniki:
+### Koła i silniki:
 - Motor A+ --> VIN
 - Motor A- --> GND
 - Motor B+ --> VIN
 - Motor B- --> GND
 
-### 🔗 Sterownik L298N do płytki STM32:
+### Sterownik L298N do płytki STM32:
 - IN1 --> PA0 (A0)
 - IN2 --> PA1 (A1)
 - IN3 --> PA4 (A2)
@@ -52,7 +52,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 - ENB --> PA8 (D7)
 
 
-### 🔋 Stabilizator napięcia LM7805:
+### Stabilizator napięcia LM7805:
 - VCC stabilizatora --> VMS (12V) na sterowniku
 - GND stabilizatora --> GND sterownika
 - GND sterownika --> GND płytki
@@ -60,14 +60,14 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 - GND stabilizatora --> GND płytki
 
 
-### 📏 Czujnik odległości HC-SR04:
+### Czujnik odległości HC-SR04:
 - Trig --> PA5 (D13)
 - Echo --> PA6 (D12)
 - VCC --> 5V
 - GND --> GND
 
 
-### 📶 Bluetooth HC-05:
+### Bluetooth HC-05:
 - VCC --> VCC z LM7805
 - GND --> GND (CN11 na płytce)
 - TXD --> PA10 (D2)
