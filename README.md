@@ -45,8 +45,8 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 |Motor B- --> GND|
 
 ### 🔗 Sterownik L298N do płytki STM32:
-IN1 --> PA0 (A0)
-IN2 --> PA1 (A1)
+- IN1 --> PA0 (A0)
+- IN2 --> PA1 (A1)
 IN3 --> PA4 (A2)
 IN4 --> PB1 (A3)
 ENA --> PB9 (D14)
