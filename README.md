@@ -74,3 +74,5 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 - TXD --> PA10 (D2)
 - RXD --> PA9 (D8)
 
+
+## Działanie w IdeCube
