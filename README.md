@@ -27,12 +27,8 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ---
 
-## 🔌 Schemat elektryczny
-
 📷 **Serce projektu - STM32F303RET6**:  
-<p align="center">
-  <img src="https://github.com/yunayana/Projekt_SWiM_2025/blob/main/img/Plytka.png?raw=true" alt="Użyta płytka" width="400"/>
-</p>
+
 
 
 > W repozytorium umieść plik w folderze `docs/` jako np. `schemat.jpg` i użyj:  
@@ -43,3 +39,38 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 ## ⚙️ Połączenia
 
 ### 🔁 Koła i silniki:
+Motor A+ --> VIN
+Motor A- --> GND
+Motor B+ --> VIN
+Motor B- --> GND
+
+### 🔗 Sterownik L298N do płytki STM32:
+IN1 --> PA0 (A0)
+IN2 --> PA1 (A1)
+IN3 --> PA4 (A2)
+IN4 --> PB1 (A3)
+ENA --> PB9 (D14)
+ENB --> PA8 (D7)
+
+
+### 🔋 Stabilizator napięcia LM7805:
+VCC stabilizatora --> VMS (12V) na sterowniku
+GND stabilizatora --> GND sterownika
+GND sterownika --> GND płytki
+VCC stabilizatora --> VIN płytki
+GND stabilizatora --> GND płytki
+
+
+### 📏 Czujnik odległości HC-SR04:
+Trig --> PA5 (D13)
+Echo --> PA6 (D12)
+VCC --> 5V
+GND --> GND
+
+
+### 📶 Bluetooth HC-05:
+VCC --> VCC z LM7805
+GND --> GND (CN11 na płytce)
+TXD --> PA10 (D2)
+RXD --> PA9 (D8)
+
