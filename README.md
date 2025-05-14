@@ -31,8 +31,9 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 📷 **Serce projektu - STM32F303RET6**:  
 <p align="center">
-  <img src="img/Plytka.png" alt="Użyta płytka" width="400"/>
+  <img src="https://github.com/yunayana/Projekt_SWiM_2025/blob/main/img/Plytka.png?raw=true" alt="Użyta płytka" width="400"/>
 </p>
+
 
 > W repozytorium umieść plik w folderze `docs/` jako np. `schemat.jpg` i użyj:  
 > `![Schemat elektryczny](docs/schemat.jpg)`
