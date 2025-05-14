@@ -39,10 +39,10 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 ## ⚙️ Połączenia
 
 ### 🔁 Koła i silniki:
-Motor A+ --> VIN
-Motor A- --> GND
-Motor B+ --> VIN
-Motor B- --> GND
+|Motor A+ --> VIN|
+|Motor A- --> GND|
+|Motor B+ --> VIN|
+|Motor B- --> GND|
 
 ### 🔗 Sterownik L298N do płytki STM32:
 IN1 --> PA0 (A0)
