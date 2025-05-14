@@ -1,6 +1,6 @@
 # Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
 
-# Okaaaaaaaay, let`s go!
+Okaaaaaaaay, let`s go!
 
 ### Uczestnicy zespołu:
 - **Yana Trotsenko** – 21232 🐱  
