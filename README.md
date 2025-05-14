@@ -39,6 +39,8 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ## Połączenia
 
+![Schemat](img/schematnormalny.png)
+
 ### Koła i silniki:
 - Motor A+ --> VIN
 - Motor A- --> GND
