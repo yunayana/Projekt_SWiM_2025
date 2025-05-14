@@ -27,7 +27,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ---
 
-📷 **Serce projektu - STM32F303RET6**:  
+ **Serce projektu - STM32F303RET6**:  
 
 
 
@@ -35,7 +35,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ---
 
-## ⚙Połączenia
+## Połączenia
 
 ### Koła i silniki:
 - Motor A+ --> VIN
