@@ -31,8 +31,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 
 
-> W repozytorium umieść plik w folderze `docs/` jako np. `schemat.jpg` i użyj:  
-> `![Schemat elektryczny](docs/schemat.jpg)`
+![Użyta płytka](img/PLYTKA.png)
 
 ---
 
