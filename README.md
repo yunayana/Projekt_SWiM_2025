@@ -29,8 +29,11 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ## 🔌 Schemat elektryczny
 
-📷 **Schemat**:  
-![Schemat elektryczny](img/PLYTKA.png) 
+📷 **Serce projektu - STM32F303RET6**:  
+<p align="center">
+  <img src="img/Plytka.jpg" alt="Użyta płytka" width="400"/>
+</p>
+
 > W repozytorium umieść plik w folderze `docs/` jako np. `schemat.jpg` i użyj:  
 > `![Schemat elektryczny](docs/schemat.jpg)`
 
