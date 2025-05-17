@@ -122,10 +122,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ---
 
-### Konfiguracja zegara (Clock Configuration)
 
-- PLL: **Włączony**
-- SYSCLK: **72 MHz**
 
 
 
