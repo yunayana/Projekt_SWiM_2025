@@ -119,7 +119,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 - Data bits: `8`
 - Parity: `None`
 - Stop bits: `1`
-- 
+
 ![KonfigIde](img/konfigide.jpg)
 
 ---
