@@ -87,49 +87,11 @@ Wyjście stabilizatora (zasilanie dla układów):
 - GND → GND pinboard
 - VCC → VCC pinboard
 
-## Konfiguracja mikrokontrolera w STM32CubeIDE
+## Konfiguracja pinów i ustawień w STM32 CubeIDE
 
-### Sterownik silników L298N
 
-| Nazwa sygnału | Pin STM32 | Oznaczenie | Konfiguracja        |
-|---------------|-----------|------------|----------------------|
-| IN1           | PA0       | A0         | GPIO Output          |
-| IN2           | PA1       | A1         | GPIO Output          |
-| IN3           | PA4       | A2         | GPIO Output          |
-| IN4           | PB1       | A3         | GPIO Output          |
-| ENA           | PB9       | D14        | Timer4 CH4 (PWM Out) |
-| ENB           | PA8       | D7         | Timer1 CH1 (PWM Out) |
 
-**Ustawienia PWM dla ENA i ENB:**
-- Prescaler: `71`
-- Counter Period: `999`  
-(Daje częstotliwość PWM ok. 1 kHz przy SYSCLK = 72 MHz)
-
----
-
-### Czujnik ultradźwiękowy HC-SR04
-
-| Nazwa sygnału | Pin STM32 | Oznaczenie | Konfiguracja   |
-|---------------|-----------|------------|----------------|
-| Trig          | PA5       | D13        | GPIO Output    |
-| Echo          | PA6       | D12        | GPIO Input     |
-
----
-
-### Moduł Bluetooth HC-05
-
-| Nazwa sygnału | Pin STM32 | Oznaczenie | Konfiguracja   |
-|---------------|-----------|------------|----------------|
-| TXD (HC-05)   | PA10      | D2         | USART1_RX      |
-| RXD (HC-05)   | PA9       | D8         | USART1_TX      |
-
-**Ustawienia UART (USART1):**
-- Baud rate: `9600`
-- Data bits: `8`
-- Parity: `None`
-- Stop bits: `1`
-
-![KonfigIde](img/konfigide.jpg)
+![KonfigIde](img/configide.jpg)
 
 ---
 
