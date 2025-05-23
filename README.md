@@ -57,11 +57,16 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 
 ### Stabilizator napięcia LM7805:
-- VCC stabilizatora --> VMS (12V) na sterowniku
-- GND stabilizatora --> GND sterownika
-- GND sterownika --> GND płytki
-- VCC stabilizatora --> VIN płytki
-- GND stabilizatora --> GND płytki
+Wejście stabilizatora (zasilanie ze strony baterii):
+
+- VCC --> pierwszy rząd na płytce stykowej
+- GND --> drugi rząd na płytce stykowej
+
+Wyjście stabilizatora (zasilanie dla układów):
+
+- VCC --> E5V na płytce
+- VCC --> VCC modułu Bluetooth
+- GND --> GND płytki
 
 
 ### Czujnik odległości HC-SR04:
@@ -77,6 +82,10 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 - TXD --> PA10 (D2)
 - RXD --> PA9 (D8)
 
+### Zasilanie z baterii / przycisk:
+
+- GND → GND pinboard
+- VCC → VCC pinboard
 
 ## Konfiguracja mikrokontrolera w STM32CubeIDE
 
