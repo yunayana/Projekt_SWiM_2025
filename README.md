@@ -89,6 +89,7 @@ Wyjście stabilizatora (zasilanie dla układów):
 
 ## Konfiguracja pinów i ustawień w STM32 CubeIDE
 
+![DOCUMANTATION](img/extension_connectors.png)
 ![KonfigIde](img/configide.jpg)
 
 
