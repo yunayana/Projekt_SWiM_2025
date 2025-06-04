@@ -41,51 +41,33 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ![Schemat](img/schematnormalny.png)
 
-### Koła i silniki:
-- Motor A+ --> VIN
-- Motor A- --> GND
-- Motor B+ --> VIN
-- Motor B- --> GND
 
-### Sterownik L298N do płytki STM32:
-- IN1 --> PA0 (A0)
-- IN2 --> PA1 (A1)
-- IN3 --> PA4 (A2)
-- IN4 --> PB1 (A3)
-- ENA --> PB9 (D14)
-- ENB --> PA8 (D7)
-
-
-### Stabilizator napięcia LM7805:
-Wejście stabilizatora (zasilanie ze strony baterii):
-
-- VCC --> pierwszy rząd na płytce stykowej
-- GND --> drugi rząd na płytce stykowej
-
-Wyjście stabilizatora (zasilanie dla układów):
-
-- VCC --> E5V na płytce
-- VCC --> VCC modułu Bluetooth
-- GND --> GND płytki
-
-
-### Czujnik odległości HC-SR04:
-- Trig --> PA5 (D13)
-- Echo --> PA6 (D12)
-- VCC --> 5V
-- GND --> GND
-
-
-### Bluetooth HC-05:
-- VCC --> VCC z LM7805
-- GND --> GND (CN11 na płytce)
-- TXD --> PA10 (D2)
-- RXD --> PA9 (D8)
-
-### Zasilanie z baterii / przycisk:
-
-- GND → GND pinboard
-- VCC → VCC pinboard
+| Komponent             | Pin Komponentu | Połączenie z STM32 / Zasilaniem        |
+|-----------------------|----------------|-----------------------------------------|
+| **Silniki (poprzez L298N)** | Motor A+          | VIN                                     |
+|                       | Motor A-          | GND                                     |
+|                       | Motor B+          | VIN                                     |
+|                       | Motor B-          | GND                                     |
+| **Sterownik L298N**   | IN1               | PA0 (A0)                                |
+|                       | IN2               | PA1 (A1)                                |
+|                       | IN3               | PA4 (A2)                                |
+|                       | IN4               | PB1 (A3)                                |
+|                       | ENA               | PB9 (D14)                               |
+|                       | ENB               | PA8 (D7)                                |
+| **Stabilizator LM7805** | Wejście VCC       | VCC z baterii → pierwszy rząd płytki    |
+|                       | Wejście GND       | GND z baterii → drugi rząd płytki       |
+|                       | Wyjście VCC       | E5V, VCC Bluetooth                      |
+|                       | Wyjście GND       | GND płytki                              |
+| **Czujnik HC-SR04**   | Trig              | PA5 (D13)                               |
+|                       | Echo              | PA6 (D12)                               |
+|                       | VCC               | 5V                                      |
+|                       | GND               | GND                                     |
+| **Bluetooth HC-05**   | VCC               | VCC z LM7805                            |
+|                       | GND               | GND (CN11 na płytce)                    |
+|                       | TXD               | PA10 (D2)                               |
+|                       | RXD               | PA9 (D8)                                |
+| **Zasilanie z baterii / przycisk** | VCC | VCC pinboard                             |
+|                                | GND | GND pinboard       
 
 ## Konfiguracja pinów i ustawień w STM32 CubeIDE
 
