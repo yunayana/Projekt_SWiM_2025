@@ -108,6 +108,54 @@ Podłącz płytkę do komputera przez USB, skompiluj projekt i załaduj go do mi
 Odłącz kabel USB, przestaw zworkę w pozycję VIN, a następnie podłącz baterię zgodnie ze schematem.
 ---
 
+## Kluczowe cześci projektu 
+
+void ultrasonic_trigger() {
+    HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_SET);
+    delay_us(10);
+    HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_RESET);
+}
+📌 Wysyła impuls 10 μs do czujnika ultradźwiękowego.
+
+float get_distance_cm() {
+    ultrasonic_trigger();
+    uint32_t duration = ultrasonic_read();
+    return (duration * 0.034) / 2;
+}
+📌 Oblicza odległość w centymetrach na podstawie czasu echa.
+
+
+void przod() { TIM2->CCR1 = 500; ... }
+void tyl()  { TIM2->CCR1 = 0;   ... }
+void stop() { TIM2->CCR1 = 0;   ... }
+void prawo(){ TIM2->CCR1 = 50;  ... }
+void lewo() { TIM2->CCR1 = 500; ... }
+📌 Zmieniają wartość PWM kanałów TIM2 i TIM3 – kontrolują kierunek ruchu robota.
+
+int main(void) {
+    HAL_Init();
+    DWT_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    MX_TIM2_Init();
+    MX_TIM3_Init();
+    
+    HAL_TIM_PWM_Start_IT(...); // start PWM
+    HAL_GPIO_WritePin(...);    // wyłączenie ISD1820
+
+    while (1) {
+        float distance = get_distance_cm();
+        if (distance > 20.0) przod();
+        else {
+            stop(); syrena(); cofanie(); skręt(); stop();
+        }
+        HAL_Delay(100);
+    }
+}
+📌 Główna pętla: pomiar odległości i decyzje o ruchu oraz alarmie.
+
+
+
 
 
 
