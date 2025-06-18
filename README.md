@@ -1,11 +1,14 @@
 # Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
 
-Okaaaaaaaay, let`s go!
+## Model pojazdu z użyciem STM32F303RET6, czujnikiem HC-SR04 oraz sygnalizacja ISD1820
+
+| ![robot](img/proces_obudowa1.jpg) | ![robot](img/proces_obudowa2.jpg) | ![robot](img/proces_obudowa3.jpg) |
+|------------------------|------------------------|------------------------|
 
 ### Uczestnicy zespołu:
-- **Yana Trotsenko** – 21232 🐱  
-- **Zofia Głowacka** – 21234 🐻   
-- **Valeriia Khylchenko** – 21279 🐿️ 
+- **Yana Trotsenko** – 21232  
+- **Zofia Głowacka** – 21234   
+- **Valeriia Khylchenko** – 21279 
 
 ---
 
@@ -26,7 +29,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 | Baterie 3.7V × 3                    | Zasilanie                                 |
 | HC-05                               | Moduł Bluetooth                           |
 | HC-SR04                             | Ultradźwiękowy czujnik odległości         |
-
+| ISD1820                             | Moduł nagrywania i odtwarzania dźwięku    |
 ---
 
  **Serce projektu - STM32F303RET6**:  
@@ -67,40 +70,42 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 |                       | TXD               | PA10 (D2)                               |
 |                       | RXD               | PA9 (D8)                                |
 | **Zasilanie z baterii / przycisk** | VCC | VCC pinboard                             |
-|                                | GND | GND pinboard       
+|                                | GND | GND pinboard    
+| **ISD1820**           | VCC               | VCC z LM7805                            |
+|                       | GND               | GND                                     |
+|                       | PlayE             | PB8 (D15)                               |
 
-## Konfiguracja pinów i ustawień w STM32 CubeIDE
+## Konfiguracja pinów oraz ustawienia w STM32 CubeIDE
 
+1. Sprawdź piny w dokumentacji do swojej płytki
+   
 ![DOCUMANTATION](img/extension_connectors.png)
+
+2. Skonfiguruj je w programie
+   
 ![KonfigIde](img/configide.jpg)
 
-
-cos powpisywac
-
-
+3. Ustaw następujące wartości w programie
+   
 ![Ustawienia1](img/ustaw1.jpg)
-
-
-cos powpisywac
-
 
 ![Ustawienia2](img/ustaw2.jpg)
 
-
-cos powpisywac
-
-
 ![Ustawienia3](img/ustaw3.jpg)
-
-
-cos powpisywac
-
 
 ![Ustawienia4](img/ustaw4.jpg)
 
+![Ustawienia4](img/ustaw5.jpg)
 
-cos powpisywac
+## Zapisz projekt i wygeneruj kod
 
+Utwórz i zapisz projekt w STM32CubeIDE.
+
+Wklej kod z załączonego pliku do funkcji main().
+
+Podłącz płytkę do komputera przez USB, skompiluj projekt i załaduj go do mikrokontrolera.
+
+Odłącz kabel USB, przestaw zworkę w pozycję VIN, a następnie podłącz baterię zgodnie ze schematem.
 ---
 
 
