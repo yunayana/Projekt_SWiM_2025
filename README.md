@@ -11,7 +11,7 @@ Moduł dźwiękowy ISD1820 zostaje aktywowany i odtwarza nagraną wcześniej fra
 
 Po wypowiedzeniu komunikatu:
 
-pojazd cofa się przez 1 sekundę, aby oddalić się od przeszkody,
+pojazd cofa się przez 0.8 sekundę, aby oddalić się od przeszkody,
 
 następnie skręca w losowym kierunku (w lewo lub w prawo),
 
@@ -127,32 +127,142 @@ Odłącz kabel USB, przestaw zworkę w pozycję VIN, a następnie podłącz bate
 
 ## Kluczowe cześci projektu 
 
-Pomiar odległości (czujnik ultradźwiękowy)
+### Pomiar odległości (czujnik ultradźwiękowy)
 
-''' void ultrasonic_trigger() {
+```c
+void ultrasonic_trigger() {
     HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_SET);
     delay_us(10);
     HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_RESET);
-} '''
+}
+```
+
 📌 Wysyła impuls 10 μs do czujnika ultradźwiękowego.
 
-c
-Копіювати код
+```c
 float get_distance_cm() {
     ultrasonic_trigger();
     uint32_t duration = ultrasonic_read();
     return (duration * 0.034) / 2;
 }
+```
+
 📌 Oblicza odległość w centymetrach na podstawie czasu echa.
 
+---
 
-📌 Główna logika:
+### Sterowanie ruchem (PWM – silniki)
 
-mierzy odległość,
+```c
+void przod() {
+    TIM2->CCR1 = 500;
+    TIM2->CCR2 = 0;
+    TIM3->CCR2 = 500;
+    TIM3->CCR3 = 0;
+}
+```
 
-jeśli jest bezpieczna – pojazd jedzie prosto,
+```c
+void tyl() {
+    TIM2->CCR1 = 0;
+    TIM2->CCR2 = 500;
+    TIM3->CCR2 = 0;
+    TIM3->CCR3 = 500;
+}
+```
 
-jeśli wykryto przeszkodę – odtwarza komunikat „Muszę dowieźć kwiatki”, cofa się, skręca i ponownie rusza.
+```c
+void stop() {
+    TIM2->CCR1 = 0;
+    TIM2->CCR2 = 0;
+    TIM3->CCR2 = 0;
+    TIM3->CCR3 = 0;
+}
+```
+
+```c
+void prawo() {
+    TIM2->CCR1 = 50;
+    TIM2->CCR2 = 500;
+    TIM3->CCR2 = 500;
+    TIM3->CCR3 = 50;
+}
+```
+
+```c
+void lewo() {
+    TIM2->CCR1 = 500;
+    TIM2->CCR2 = 50;
+    TIM3->CCR2 = 50;
+    TIM3->CCR3 = 500;
+}
+```
+
+📌 Ustawiają wartości PWM dla kanałów TIM2 i TIM3 – decydują o kierunku i rodzaju ruchu pojazdu.
+
+---
+
+### Główna pętla programu
+
+```c
+int main(void) {
+    HAL_Init();
+    DWT_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+    MX_TIM2_Init();
+    MX_TIM3_Init();
+
+    HAL_TIM_PWM_Start_IT(&htim2, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start_IT(&htim2, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_3);
+
+    HAL_GPIO_WritePin(ISD1820_PLAY_PORT, ISD1820_PLAY_PIN, GPIO_PIN_SET); // ISD1820 wyłączone
+
+    HAL_GPIO_WritePin(EnA_GPIO_Port, EnA_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(EnB_GPIO_Port, EnB_Pin, GPIO_PIN_SET);
+
+    while (1) {
+        float distance = get_distance_cm();
+
+        if (distance > 20.0) {
+            przod(); // jedź do przodu
+            HAL_GPIO_WritePin(ISD1820_PLAY_PORT, ISD1820_PLAY_PIN, GPIO_PIN_SET); // ISD1820 wyłączone
+        } else {
+            stop(); // zatrzymaj się
+
+            HAL_GPIO_WritePin(ISD1820_PLAY_PORT, ISD1820_PLAY_PIN, GPIO_PIN_RESET); // Odtwórz dźwięk
+            HAL_Delay(300); // komunikat: "Muszę dowieźć kwiatki"
+
+            tyl();
+            HAL_Delay(800);
+
+            stop();
+            HAL_Delay(300);
+
+            prawo(); // lub losowo lewo()
+            HAL_Delay(500);
+
+            stop();
+            HAL_Delay(300);
+        }
+
+        HAL_Delay(100);
+    }
+}
+```
+
+📌 Główna logika programu:
+
+- Mierzy odległość od przeszkody.
+- Jeśli odległość jest większa niż 20 cm – pojazd porusza się do przodu.
+- Jeśli wykryto przeszkodę:
+  - Pojazd się zatrzymuje.
+  - Moduł ISD1820 odtwarza komunikat głosowy: **„Muszę dowieźć kwiatki”**.
+  - Pojazd cofa się przez 0,8 sekundy.
+  - Następnie skręca (prawo/lewo) i ponownie rusza do przodu.
+
 
 
 
