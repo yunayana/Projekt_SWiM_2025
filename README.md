@@ -1,11 +1,17 @@
 # Opracowanie modelu pojazdu autonomicznego wraz z realizacją oprogramowania sterującego 
 
-Okaaaaaaaay, let`s go!
+## Model pojazdu z użyciem STM32F303RET6, czujnikiem HC-SR04 oraz sygnalizacja ISD1820
+
+| ![robot](proces_obudowa1.jpg) | ![robot](proces_obudowa2.jpg) | ![robot](proces_obudowa3.jpg) |
+|------------------------|------------------------|------------------------|
+
+
+
 
 ### Uczestnicy zespołu:
-- **Yana Trotsenko** – 21232 🐱  
-- **Zofia Głowacka** – 21234 🐻   
-- **Valeriia Khylchenko** – 21279 🐿️ 
+- **Yana Trotsenko** – 21232  
+- **Zofia Głowacka** – 21234   
+- **Valeriia Khylchenko** – 21279 
 
 ---
 
