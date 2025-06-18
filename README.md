@@ -5,9 +5,6 @@
 | ![robot](img/proces_obudowa1.jpg) | ![robot](img/proces_obudowa2.jpg) | ![robot](img/proces_obudowa3.jpg) |
 |------------------------|------------------------|------------------------|
 
-
-
-
 ### Uczestnicy zespołu:
 - **Yana Trotsenko** – 21232  
 - **Zofia Głowacka** – 21234   
@@ -32,7 +29,7 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 | Baterie 3.7V × 3                    | Zasilanie                                 |
 | HC-05                               | Moduł Bluetooth                           |
 | HC-SR04                             | Ultradźwiękowy czujnik odległości         |
-
+| ISD1820                             | Moduł nagrywania i odtwarzania dźwięku    |
 ---
 
  **Serce projektu - STM32F303RET6**:  
@@ -73,7 +70,10 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 |                       | TXD               | PA10 (D2)                               |
 |                       | RXD               | PA9 (D8)                                |
 | **Zasilanie z baterii / przycisk** | VCC | VCC pinboard                             |
-|                                | GND | GND pinboard       
+|                                | GND | GND pinboard    
+| **ISD1820**           | VCC               | VCC z LM7805                            |
+|                       | GND               | GND                                     |
+|                       | PlayE             | PB8 (D15)                               |
 
 ## Konfiguracja pinów i ustawień w STM32 CubeIDE
 
