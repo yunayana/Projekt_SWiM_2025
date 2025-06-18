@@ -2,6 +2,23 @@
 
 ## Model pojazdu z użyciem STM32F303RET6, czujnikiem HC-SR04 oraz sygnalizacja ISD1820
 
+Pojazd porusza się do przodu, dopóki czujnik ultradźwiękowy (HC-SR04) nie wykryje przeszkody w odległości mniejszej niż 20 cm. Gdy wykryje przeszkodę:
+
+Natychmiast się zatrzymuje.
+
+Moduł dźwiękowy ISD1820 zostaje aktywowany i odtwarza nagraną wcześniej frazę:
+🗣️ „Muszę dowieźć kwiatki!”
+
+Po wypowiedzeniu komunikatu:
+
+pojazd cofa się przez 1 sekundę, aby oddalić się od przeszkody,
+
+następnie skręca w losowym kierunku (w lewo lub w prawo),
+
+po skręcie ponownie rusza do przodu i cały cykl się powtarza.
+
+
+
 | ![robot](img/proces_obudowa1.jpg) | ![robot](img/proces_obudowa2.jpg) | ![robot](img/proces_obudowa3.jpg) |
 |------------------------|------------------------|------------------------|
 
