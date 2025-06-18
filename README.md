@@ -127,6 +127,9 @@ Odłącz kabel USB, przestaw zworkę w pozycję VIN, a następnie podłącz bate
 
 ## Kluczowe cześci projektu 
 
+Pomiar odległości (czujnik ultradźwiękowy)
+c
+Копіювати код
 void ultrasonic_trigger() {
     HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_SET);
     delay_us(10);
@@ -134,6 +137,8 @@ void ultrasonic_trigger() {
 }
 📌 Wysyła impuls 10 μs do czujnika ultradźwiękowego.
 
+c
+Копіювати код
 float get_distance_cm() {
     ultrasonic_trigger();
     uint32_t duration = ultrasonic_read();
@@ -141,14 +146,48 @@ float get_distance_cm() {
 }
 📌 Oblicza odległość w centymetrach na podstawie czasu echa.
 
+Sterowanie ruchem (PWM – silniki)
+c
+Копіювати код
+void przod() {
+    TIM2->CCR1 = 500;
+    TIM2->CCR2 = 0;
+    TIM3->CCR2 = 500;
+    TIM3->CCR3 = 0;
+}
 
-void przod() { TIM2->CCR1 = 500; ... }
-void tyl()  { TIM2->CCR1 = 0;   ... }
-void stop() { TIM2->CCR1 = 0;   ... }
-void prawo(){ TIM2->CCR1 = 50;  ... }
-void lewo() { TIM2->CCR1 = 500; ... }
-📌 Zmieniają wartość PWM kanałów TIM2 i TIM3 – kontrolują kierunek ruchu robota.
+void tyl() {
+    TIM2->CCR1 = 0;
+    TIM2->CCR2 = 500;
+    TIM3->CCR2 = 0;
+    TIM3->CCR3 = 500;
+}
 
+void stop() {
+    TIM2->CCR1 = 0;
+    TIM2->CCR2 = 0;
+    TIM3->CCR2 = 0;
+    TIM3->CCR3 = 0;
+}
+
+void prawo() {
+    TIM2->CCR1 = 50;
+    TIM2->CCR2 = 500;
+    TIM3->CCR2 = 500;
+    TIM3->CCR3 = 50;
+}
+
+void lewo() {
+    TIM2->CCR1 = 500;
+    TIM2->CCR2 = 50;
+    TIM3->CCR2 = 50;
+    TIM3->CCR3 = 500;
+}
+📌 Ustawiają wartości PWM dla kanałów TIM2 i TIM3 – decydują o kierunku i rodzaju ruchu pojazdu.
+
+Główna pętla programu
+c
+Копіювати код
 int main(void) {
     HAL_Init();
     DWT_Init();
@@ -156,20 +195,44 @@ int main(void) {
     MX_GPIO_Init();
     MX_TIM2_Init();
     MX_TIM3_Init();
-    
-    HAL_TIM_PWM_Start_IT(...); // start PWM
-    HAL_GPIO_WritePin(...);    // wyłączenie ISD1820
+
+    HAL_TIM_PWM_Start_IT(&htim2, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start_IT(&htim2, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start_IT(&htim3, TIM_CHANNEL_3);
+
+    HAL_GPIO_WritePin(ISD1820_PLAY_PORT, ISD1820_PLAY_PIN, GPIO_PIN_SET); // ISD1820 wyłączone
+
+    HAL_GPIO_WritePin(EnA_GPIO_Port, EnA_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(EnB_GPIO_Port, EnB_Pin, GPIO_PIN_SET);
 
     while (1) {
         float distance = get_distance_cm();
-        if (distance > 20.0) przod();
-        else {
-            stop(); syrena(); cofanie(); skręt(); stop();
+
+        if (distance > 20.0) {
+            przod(); // jedź do przodu
+            HAL_GPIO_WritePin(ISD1820_PLAY_PORT, ISD1820_PLAY_PIN, GPIO_PIN_SET); // ISD1820 wyłączone
+        } else {
+            stop(); // zatrzymaj się
+            HAL_GPIO_WritePin(ISD1820_PLAY_PORT, ISD1820_PLAY_PIN, GPIO_PIN_RESET); // Odtwórz dźwięk
+            HAL_Delay(300);
+
+            tyl(); HAL_Delay(800); stop(); HAL_Delay(300);
+            prawo(); HAL_Delay(500); stop(); HAL_Delay(300);
         }
+
         HAL_Delay(100);
     }
 }
-📌 Główna pętla: pomiar odległości i decyzje o ruchu oraz alarmie.
+
+
+📌 Główna logika:
+
+mierzy odległość,
+
+jeśli jest bezpieczna – pojazd jedzie prosto,
+
+jeśli wykryto przeszkodę – odtwarza komunikat „Muszę dowieźć kwiatki”, cofa się, skręca i ponownie rusza.
 
 
 
