@@ -75,38 +75,31 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 |                       | GND               | GND                                     |
 |                       | PlayE             | PB8 (D15)                               |
 
-## Konfiguracja pinów i ustawień w STM32 CubeIDE
+## Konfiguracja pinów oraz ustawienia w STM32 CubeIDE
 
 ![DOCUMANTATION](img/extension_connectors.png)
+
 ![KonfigIde](img/configide.jpg)
-
-
-cos powpisywac
-
 
 ![Ustawienia1](img/ustaw1.jpg)
 
-
-cos powpisywac
-
-
 ![Ustawienia2](img/ustaw2.jpg)
-
-
-cos powpisywac
-
 
 ![Ustawienia3](img/ustaw3.jpg)
 
-
-cos powpisywac
-
-
 ![Ustawienia4](img/ustaw4.jpg)
 
+![Ustawienia4](img/ustaw5.jpg)
 
-cos powpisywac
+## Zapisz projekt i wygeneruj kod
 
+Utwórz i zapisz projekt w STM32CubeIDE.
+
+Wklej kod z załączonego pliku do funkcji main().
+
+Podłącz płytkę do komputera przez USB, skompiluj projekt i załaduj go do mikrokontrolera.
+
+Odłącz kabel USB, przestaw zworkę w pozycję VIN, a następnie podłącz baterię zgodnie ze schematem.
 ---
 
 
