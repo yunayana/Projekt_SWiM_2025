@@ -129,11 +129,11 @@ Odłącz kabel USB, przestaw zworkę w pozycję VIN, a następnie podłącz bate
 
 Pomiar odległości (czujnik ultradźwiękowy)
 
-'''void ultrasonic_trigger() {
+''' void ultrasonic_trigger() {
     HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_SET);
     delay_us(10);
     HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_RESET);
-}'''
+} '''
 📌 Wysyła impuls 10 μs do czujnika ultradźwiękowego.
 
 c
