@@ -77,10 +77,13 @@ Zaprojektowanie, zbudowanie oraz zaprogramowanie **modelu pojazdu autonomicznego
 
 ## Konfiguracja pinów oraz ustawienia w STM32 CubeIDE
 
+1. Sprawdź piny w dokumentacji do swojej płytki
 ![DOCUMANTATION](img/extension_connectors.png)
 
+2. Skonfiguruj je w programie
 ![KonfigIde](img/configide.jpg)
 
+3. Ustaw następujące wartości w programie
 ![Ustawienia1](img/ustaw1.jpg)
 
 ![Ustawienia2](img/ustaw2.jpg)
